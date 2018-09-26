@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+
+    <link rel="stylesheet" href="style.css/main.css">
+</head>
+<body>
+    <div id="root">
+
+        <h1>{{header}}</h1>
+        <h1 v-once>{{header}}</h1>
+
+        <p>{{ text }}</p>
+        <!-- <input type="text" v-model="yourText"> -->
+        
+        <input type="text" v-on:input="changeText">
+        <p>{{yourText}}</p>
+
+
+        <h1>{{returnValue()}}</h1>
+        <a :href="link">Google</a>
+
+
+        <p>{{finishedLink}}</p>
+
+        <p v-html="notSanitized">Not sanitized link</p>
+
+        <hr>
+
+        <button @click="counterPlus">Add one</button>
+
+        <p>{{count}}</p>
+
+
+        <hr>
+
+        <p @mousemove = "updateCoord">
+            Coordinate is: {{x}} / {{y}};
+        </p>
+
+        <hr>
+
+
+        <button @click="counterPlusNumber(2, $event)">Add one</button>
+
+        <p>{{count}}</p>
+
+        <hr>
+
+        <!-- stop and prevent -->
+        <p @mousemove = "updateCoord">
+            Coordinate is: {{x}} / {{y}} <span @mousemove.stop="deadZone">Dead zone</span>
+        </p>
+        
+        <hr>
+
+        <!-- <input type="text" @keyup="alertMe"> -->
+        <input type="text" @keyup.enter.space="alertMe">
+
+        <hr>
+
+        <button @click="count++">Add one</button>
+
+        <p>{{count * 2 > 10 ? "Greater than ten" : "Smaller than ten"  }}</p>
+
+        <hr>
+
+        
+        <button @click="count++">Add one</button>
+        <button @click="count--">Remove one</button>
+        <button @click="countTwo++">Add to second</button>
+        <p>{{count}} | {{countTwo}}</p>
+        <p>{{result()}} | {{output}}</p>
+
+        <hr>
+
+        <button @click="changeLink">Change</button>
+        <a :href="link">Google</a>
+
+        <hr>
+
+        <!-- <div class="demo" @click="setRed" :class="{red: isRed}"></div> -->
+        <!-- <div class="demo" @click="isRed = !isRed" :class="{red: isRed}"></div> -->
+        <div class="demo" @click="isRed = !isRed" :class="divStyles"></div>
+        <div class="demo"></div>
+        
+        <div class="demo" :class="color"></div>
+        
+
+        <hr>
+
+        <input type="text" v-model="color">
+
+        <hr>
+
+        <div class="demo" :style="{backgroundColor: color, width: width + 'px'}"></div>
+        <div class="demo" :style="{width: width + 'px'}"></div>
+        <div class="demo" :style="myStyle"></div>
+        
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+        
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>

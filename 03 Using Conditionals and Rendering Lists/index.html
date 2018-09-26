@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+
+    <link rel="stylesheet" href="style.css/main.css">
+</head>
+<body>
+    <div id="root">
+        <p v-if="isShowing">First paragraph</p>
+        <p v-else>Second paragraph</p>
+        <!-- <p v-if="!isShowing">Second paragraph</p> -->
+
+        <template v-show="isShowing">
+            <h1>header</h1>
+            <p>test</p>
+        </template>
+
+        <!-- <button @click="changeShowing">Show and Hide</button> -->
+        <button @click="isShowing = !isShowing">Show and Hide</button>
+
+
+        <!-- rendering v-for -->
+
+        <ul>
+            <li v-for="(el, index) in menus" :key="el.index">
+                {{el}} the index is {{index}}
+            </li>
+        </ul>
+
+
+        <template  v-for="(el, index) in menus" :key="el.index">
+            <h1>{{el}}</h1>
+            <p>{{index}}</p>
+        </template>
+
+
+        <ul>
+            <li v-for="person in persons" :key="person.id">
+                {{ person.name }} your color {{person.color}}
+            </li>
+        </ul>
+
+        <template v-for="person in persons">
+            <div v-for="(value, key) in person">
+                The value - {{value}}, the key - {{key}}
+            </div>
+        </template>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
