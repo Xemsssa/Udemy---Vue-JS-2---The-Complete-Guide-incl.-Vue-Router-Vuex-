@@ -49,44 +49,29 @@ let  el = new Vue({
             // this.monsterHealth -= this.playerHeat;
             // this.playerHealth -= monsterHeat;
 
-
-            // video
-            // let min = 3;
-            // let max = 10;
-            // let damage = Math.max(Math.floor(Math.random() * max) + 1, min);
-            let monsterHeat =  this.damage(5, 15)
-            let playerHeat =  this.damage(3, 10)
+            let monsterHeat =  this.monsterAttacks();
+            let playerHeat =  this.damage(3, 10);
           
             this.monsterHealth -= playerHeat;
             this.playerHealth -= monsterHeat;
 
             this.winner();
-            
-            // if(this.monsterHealth <= 0 ) {
-            //     msg = "The winner is HERO";
-            //     this.gameIsRunning = false;
-            //     alert(msg);
-            // } else if (this.playerHealth <= 0){
-            //     msg = "The winner is Monster";
-            //     this.gameIsRunning = false;
-            //     alert(msg);
-            // } else if (this.playerHealth <= 0 && this.monsterHealth <= 0) {
-            //     msg = "BOTH are dead! Tie!!!";
-            //     this.gameIsRunning = false;
-            //     alert(msg);
-            // } 
-            // // else {
-                // msg = "Playing";
-            // }
 
             this.logs.push("The player heat monster by " + playerHeat);
             this.logs.push("The player was heat by monster " + monsterHeat);
         },
         // special attack
         specialAttack() {
-            this.monsterHealth -= this.specialAttackValue;
-            this.logs.push("The player heat monster by " + this.specialAttackValue );
+            specialAttackValue = this.damage(25, 30);
+            this.monsterHealth -= specialAttackValue;
+            this.monsterAttacks();
+            this.logs.push("The player heat HARD IN DA FACE monster by " + specialAttackValue );
         },
+
+        monsterAttacks() {
+          return this.damage(5, 15);
+        },
+
         // heal
 
         heal(){
@@ -95,11 +80,14 @@ let  el = new Vue({
         },
         // give up
         giveUp(){
-            alert("Give up");
-            this.playerHealth = 100;
-            this.monsterHealth = 100;
-            // clear log
-            this.logs = [];
+
+            this.gameIsRunning = false; 
+
+            // alert("Give up");
+            // this.playerHealth = 100;
+            // this.monsterHealth = 100;
+            // // clear log
+            // this.logs = [];
         },
 
         winner () {
