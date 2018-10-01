@@ -7,16 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app">
+    <div id="app1">
         <!-- {{test}} -->
         <h1>{{title}}</h1>
-        <button @click="showParagrapth">Show</button>
+        <button @click="showParagrapth" ref="myBtn">Show</button>
 
         <p v-if="show">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos totam dolorem labore minus cupiditate cum quia laudantium deserunt iusto?
         </p>
     </div>
 
+
+    <div id="app2">
+        <h1>{{title}}</h1>
+        <button @click="changeFirstTitle">Change First Title</button>
+    </div>
+
+
+    <div id="app3">
+        <h1>{{title}}</h1>
+
+        <button @click="title = 'updated'">update</button>
+        <button @click="title = 'default'">update</button>
+        <button @click="destroy">destroy</button>
+
+    </div>
+
+    <hello />
+    <hello />
     <!-- <script src="https://npmcdn.com/vue/dist/vue.js"></script> -->
     <script src="js/vue.js"></script>
     <script src="js/main.js"></script>
