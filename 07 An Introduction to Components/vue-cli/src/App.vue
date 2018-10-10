@@ -1,0 +1,3 @@
+<template>
+  <app-servers/>
+</template>
